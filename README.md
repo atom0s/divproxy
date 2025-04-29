@@ -2,10 +2,15 @@
     <img width="200" src="https://github.com/atom0s/divproxy-src/raw/main/repo/wings.png" alt="divproxy">
     </br>
 </div>
+<div align="center">
+    <a href="https://discord.gg/UmXNvjq"><img src="https://img.shields.io/discord/704822642846466096.svg?style=for-the-badge" alt="Discord server" /></a>
+    <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-AGPL_v3-blue?style=for-the-badge" alt="license" /></a>
+    <br/>
+</div>
 
 # divproxy
 
-This repository contains the source code to the Divine Divinity proxy project, **divproxy**.
+**divproxy** is a free feature-rich third-party enhancement/modification for Divine Divinity.
 
 ## Donations & Sponsorships
 
