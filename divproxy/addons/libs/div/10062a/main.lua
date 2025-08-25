@@ -158,6 +158,17 @@ game.is_valid_ptr = function (addr)
 end
 
 --[[
+* Helper function to convert a cdata (or number) value to its pointer address.
+*
+* @param {cdata|number} val - The cdata object or number to convert.
+* @return {number} The converted address value.
+--]]
+ffi.cdata_to_ptr = function (val)
+    local addr = game.real_ffi_cast('void*', val);
+    return tonumber(game.real_ffi_cast('uint32_t', addr));
+end
+
+--[[
 * Override for 'ffi.cast' to add pointer validation.
 --]]
 ffi.cast = function (ctype, init)
@@ -167,7 +178,7 @@ ffi.cast = function (ctype, init)
 
     return switch(type(init), T{
         [T{ 'cdata', 'number' }] = function ()
-            local addr = tonumber(game.real_ffi_cast('uint32_t', init));
+            local addr = ffi.cdata_to_ptr(init);
             if (addr == 0 or not game.is_valid_ptr(addr)) then
                 return game.real_ffi_cast(ctype, nil);
             end
@@ -189,7 +200,7 @@ ffi.string = function (data, size)
 
     return switch(type(data), T{
         ['cdata'] = function ()
-            local addr = tonumber(game.real_ffi_cast('uint32_t', data));
+            local addr = ffi.cdata_to_ptr(data);
             if (addr == 0 or not game.is_valid_ptr(addr)) then
                 return nil;
             end
