@@ -487,7 +487,7 @@ table_mt.forieach = table_mt.ieach;
 * Returns the result of executing the given function against every element in the table. (The returned table is reindexed numerically, as an array.)
 *
 * @param {table} self - The parent table.
-* @param {function} f - The mapping function. [Function arguments are passed as: value]
+* @param {function} f - The mapping function. [Function arguments are passed as: value, key]
 * @return {table} The mapped table.
 --]]
 table_mt.imap = function (self, f)
@@ -496,7 +496,7 @@ table_mt.imap = function (self, f)
 
     for k, v in pairs(self) do
         n = n + 1;
-        ret[n] = f(v);
+        ret[n] = f(v, k);
     end
 
     return T(ret);
