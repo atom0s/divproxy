@@ -97,6 +97,42 @@ ObjectDataFlag_SbInvisible              = bit.lshift(1, 29);
 ObjectDataFlag_SbInventory              = bit.lshift(1, 30);
 ObjectDataFlag_SbStrength               = bit.lshift(1, 31);
 
+-- Object Data Flag Names
+ObjectDataFlagNames = T{
+    'sb_func_paramter',
+    'sb_slot',
+    'sb_treasure',
+    'sb_count',
+    'sb_key',
+    'sb_door',
+    'sb_lever',
+    'sb_inside',
+    'sb_osiris',
+    'sb_disappears',
+    'sb_chest',
+    'sb_light',
+    'sb_transforms',
+    'sb_wt_use',
+    'sb_use_on',
+    'sb_generated',
+    'sb_value',
+    'sb_function',
+    'sb_move',
+    'sb_item_class',
+    'sb_item_class',
+    'sb_locked',
+    'sb_broken',
+    'sb_can_carry',
+    'sb_walk_through',
+    'sb_closed',
+    'sb_property',
+    'sb_stolen',
+    'sb_player_block',
+    'sb_invisible',
+    'sb_inventory',
+    'sb_strength',
+};
+
 ffi.cdef[[
 
     typedef bool    (__cdecl* CObjectData_HasPropertySpace_f)(uint32_t, uint32_t);
@@ -161,14 +197,13 @@ ffi.cdef[[
         uint32_t        index;
         uint8_t         lerp_speed;                 // The amount to increase the objects height each frame.
         uint8_t         lerp_step;                  // The amount to increase the lerp_speed each frame by. (Default is 0.)
-        uint8_t         unknown0006;
-        uint8_t         unknown0007;
+        uint16_t        padding0006;
         int32_t         x;
         int32_t         y;
         int32_t         last_visual_x;
         int32_t         last_visual_y;
         int16_t         height;
-        uint16_t        unknown001A;
+        uint16_t        padding001A;
         int32_t         visual_x;
         int32_t         visual_y;
         uint32_t        object_index;
@@ -176,17 +211,17 @@ ffi.cdef[[
         uint32_t        flags;
         CObjectData     data;
         int16_t         animation_frame;
-        uint16_t        unknown0046;
-        int32_t         tile_image_index;
+        uint16_t        padding0046;
+        int32_t         animated_tile_image_index;
         int16_t         animation_frame_prev;       // The previous animation_frame value.
         uint16_t        blink_timer;                // Timer used to blink the object sprite and show a shimmer effect.
         uint32_t        data_flags;
         uint32_t        external_index;             // Used with highlighting and Osiris object indexes.
-        int32_t         unknown0058;                // Unknown. [Often used as a clone of the object_index.]
+        int32_t         tile_image_index;
         int16_t         height_lerp;                // The desired height the object should move to. (Requires lerp_speed to be set to at least 1 to start moving.)
         uint16_t        padding005E;
-        void*           unknown0060;                // Unknown. [Pointer to the current animation/image frame.]
-        uint32_t        unknown0064;
+        void*           tile_image_frame;
+        uint32_t        unknown0064;                // sfx related.
         void*           sorted_sprite;
     } CObjectInstance;
 
