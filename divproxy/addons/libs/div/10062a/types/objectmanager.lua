@@ -68,7 +68,7 @@ ffi.cdef[[
         int32_t                         osiris_objects_size;
         int32_t                         osiris_objects_count;
         int32_t                         osiris_objects_max;
-        uint32_t*                       extfree_objects;
+        int32_t*                        extfree_objects;
         int32_t                         extfree_objects_size;
         CObject*                        objects;
         CObjectInstance*                objects_instances;
